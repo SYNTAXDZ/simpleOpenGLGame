@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include/glad -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o CMakeFiles/simple_opengl_game.dir/main.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/main.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/main.cpp"
+}
+]
