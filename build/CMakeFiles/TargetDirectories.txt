@@ -32,3 +32,9 @@
 /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/CMakeFiles/ContinuousTest.dir
 /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/CMakeFiles/ContinuousUpdate.dir
 /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/CMakeFiles/ExperimentalBuild.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/rebuild_cache.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/edit_cache.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/test.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/game.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/package_source.dir
+/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/src/CMakeFiles/package.dir

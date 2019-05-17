@@ -39,6 +39,25 @@ rule CXX_EXECUTABLE_LINKER__simple_opengl_game
 
 
 #############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__game
+  depfile = $DEP_FILE
+  deps = gcc
+  command = /usr/bin/g++-7  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__game
+  command = $PRE_LINK && /usr/bin/cmake -E remove $TARGET_FILE && /usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /usr/bin/ranlib $TARGET_FILE && $POST_BUILD
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE

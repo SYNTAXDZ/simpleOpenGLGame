@@ -259,6 +259,15 @@ DART_TESTING_TIMEOUT:STRING=1500
 //Path to a program.
 GITCOMMAND:FILEPATH=/usr/bin/git
 
+//Path to a file.
+GLEW_INCLUDE_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
+//Path to a library.
+GLEW_LIBRARY_DEBUG:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libGLEWd.a
+
+//Path to a library.
+GLEW_LIBRARY_RELEASE:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libGLEW.a
+
 //Path to a program.
 HGCOMMAND:FILEPATH=HGCOMMAND-NOTFOUND
 
@@ -300,6 +309,9 @@ VCPKG_TARGET_TRIPLET:STRING=x64-linux
 //Path to a program.
 _VCPKG_CL:FILEPATH=_VCPKG_CL-NOTFOUND
 
+//Dependencies for the target
+game_LIB_DEPENDS:STATIC=general;soil2;
+
 //The directory containing a CMake configuration file for glad.
 glad_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/glad
 
@@ -309,11 +321,17 @@ glfw3_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/glfw3
 //The directory containing a CMake configuration file for glm.
 glm_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/glm
 
+//Dependencies for the target
+resource_manager_LIB_DEPENDS:STATIC=general;soil2;
+
 //Value Computed by CMake
 simple_opengl_game_BINARY_DIR:STATIC=/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build
 
 //Value Computed by CMake
 simple_opengl_game_SOURCE_DIR:STATIC=/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame
+
+//The directory containing a CMake configuration file for soil2.
+soil2_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/soil2
 
 
 ########################
@@ -416,7 +434,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -505,8 +523,16 @@ CVSCOMMAND-ADVANCED:INTERNAL=1
 CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//Details about finding GLEW
+FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[/home/syntax/Programs/vcpkg/installed/x64-linux/include][optimized;/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libGLEW.a;debug;/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libGLEWd.a][v()]
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GLEW_INCLUDE_DIR
+GLEW_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GLEW_LIBRARY_DEBUG
+GLEW_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GLEW_LIBRARY_RELEASE
+GLEW_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: HGCOMMAND
 HGCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MAKECOMMAND

@@ -1,7 +1,31 @@
 [
 {
   "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
-  "command": "/usr/bin/g++-7   -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include/glad -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o CMakeFiles/simple_opengl_game.dir/main.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/main.cpp",
-  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/main.cpp"
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include/glad -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o CMakeFiles/simple_opengl_game.dir/src/main.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/main.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/main.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/game.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/resource_manager.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/resource_manager.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/resource_manager.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/texture.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/texture.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/texture.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/shader.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/shader.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/shader.cpp"
 }
 ]
