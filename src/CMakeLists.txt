@@ -5,12 +5,16 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/game.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/resource_manager.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/sprite_renderer.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/game.h
     ${CMAKE_CURRENT_SOURCE_DIR}/resource_manager.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/texture.h
+    #${CMAKE_CURRENT_SOURCE_DIR}/shader.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/shader.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/sprite_renderer.h
 
 )
 

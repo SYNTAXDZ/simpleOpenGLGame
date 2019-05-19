@@ -1,5 +1,5 @@
-#include <glad/glad.h>
-//#include <GL/glew.h>
+//#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "game.h"
@@ -27,14 +27,14 @@ int main( int argc, char *argv[] ) {
     GLFWwindow* window = glfwCreateWindow( SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout", nullptr, nullptr );
     glfwMakeContextCurrent( window );
     
-    if( !gladLoadGLLoader( ( GLADloadproc )glfwGetProcAddress ) ) {
+    /*if( !gladLoadGLLoader( ( GLADloadproc )glfwGetProcAddress ) ) {
     
         return -1;
     
-    }
+    }*/
     
-    //glewExperimental = true;
-    //glewInit();
+    glewExperimental = true;
+    glewInit();
     glGetError(); // Call it once to catch glad initialization bug, all other errors are now from our application.
 
     glfwSetKeyCallback( window, key_callback );
