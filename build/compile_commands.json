@@ -33,5 +33,17 @@
   "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
   "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/sprite_renderer.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/sprite_renderer.cpp",
   "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/sprite_renderer.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/game_object.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game_object.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game_object.cpp"
+},
+
+{
+  "directory": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build",
+  "command": "/usr/bin/g++-7   -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include  -g   -o src/CMakeFiles/game.dir/game_level.cpp.o -c /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game_level.cpp",
+  "file": "/home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/src/game_level.cpp"
 }
 ]
