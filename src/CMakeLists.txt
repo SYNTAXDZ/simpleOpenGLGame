@@ -8,6 +8,8 @@ add_library(
     #${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/sprite_renderer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game_object.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game_level.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/game.h
     ${CMAKE_CURRENT_SOURCE_DIR}/resource_manager.h
@@ -15,6 +17,8 @@ add_library(
     #${CMAKE_CURRENT_SOURCE_DIR}/shader.h
     ${CMAKE_CURRENT_SOURCE_DIR}/shader.h
     ${CMAKE_CURRENT_SOURCE_DIR}/sprite_renderer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/game_object.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/game_level.cpp
 
 )
 

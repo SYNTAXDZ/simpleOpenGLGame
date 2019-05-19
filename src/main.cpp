@@ -49,8 +49,8 @@ int main( int argc, char *argv[] ) {
     Breakout.Init();
 
     // DeltaTime variables
-    GLfloat deltaTime = 0.0f;
-    GLfloat lastFrame = 0.0f;
+    float deltaTime = 0.0f;
+    float lastFrame = 0.0f;
 
     // Start Game within Menu State
     Breakout.State = GAME_ACTIVE;

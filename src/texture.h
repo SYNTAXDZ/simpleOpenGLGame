@@ -31,7 +31,7 @@ public:
     // Constructor (sets default texture modes)
     Texture2D();
     // Generates texture from image data
-    void Generate(unsigned int width, unsigned int height, unsigned char* data);
+    void Generate( unsigned int width, unsigned int height, unsigned char* data );
     // Binds the texture as the current active GL_TEXTURE_2D texture object
     void Bind() const;
 
