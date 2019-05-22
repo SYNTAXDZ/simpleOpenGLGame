@@ -543,6 +543,12 @@ build src/CMakeFiles/game.dir/particle_generator.cpp.o: CXX_COMPILER__game ../sr
   INCLUDES = -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include
   OBJECT_DIR = src/CMakeFiles/game.dir
   OBJECT_FILE_DIR = src/CMakeFiles/game.dir
+build src/CMakeFiles/game.dir/post_processing.cpp.o: CXX_COMPILER__game ../src/post_processing.cpp || cmake_object_order_depends_target_game
+  DEP_FILE = src/CMakeFiles/game.dir/post_processing.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I../src/src -isystem /home/syntax/Programs/vcpkg/installed/x64-linux/include
+  OBJECT_DIR = src/CMakeFiles/game.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/game.dir
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target game
@@ -551,7 +557,7 @@ build src/CMakeFiles/game.dir/particle_generator.cpp.o: CXX_COMPILER__game ../sr
 #############################################
 # Link the static library src/libgame.a
 
-build src/libgame.a: CXX_STATIC_LIBRARY_LINKER__game src/CMakeFiles/game.dir/game.cpp.o src/CMakeFiles/game.dir/resource_manager.cpp.o src/CMakeFiles/game.dir/texture.cpp.o src/CMakeFiles/game.dir/shader.cpp.o src/CMakeFiles/game.dir/sprite_renderer.cpp.o src/CMakeFiles/game.dir/game_object.cpp.o src/CMakeFiles/game.dir/game_level.cpp.o src/CMakeFiles/game.dir/ball_object.cpp.o src/CMakeFiles/game.dir/particle_generator.cpp.o
+build src/libgame.a: CXX_STATIC_LIBRARY_LINKER__game src/CMakeFiles/game.dir/game.cpp.o src/CMakeFiles/game.dir/resource_manager.cpp.o src/CMakeFiles/game.dir/texture.cpp.o src/CMakeFiles/game.dir/shader.cpp.o src/CMakeFiles/game.dir/sprite_renderer.cpp.o src/CMakeFiles/game.dir/game_object.cpp.o src/CMakeFiles/game.dir/game_level.cpp.o src/CMakeFiles/game.dir/ball_object.cpp.o src/CMakeFiles/game.dir/particle_generator.cpp.o src/CMakeFiles/game.dir/post_processing.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = src/CMakeFiles/game.dir
   POST_BUILD = :
