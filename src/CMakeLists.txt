@@ -11,6 +11,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/game_level.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/ball_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/particle_generator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/post_processing.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/game.h
     ${CMAKE_CURRENT_SOURCE_DIR}/resource_manager.h
@@ -21,6 +22,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/game_level.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ball_object.h
     ${CMAKE_CURRENT_SOURCE_DIR}/particle_generator.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/post_processing.h
 
 )
 

@@ -11,12 +11,16 @@
 #include "sprite_renderer.h"
 #include "ball_object.h"
 #include "particle_generator.h"
+#include "post_processing.h"
 
 // Game-related State data
 SpriteRenderer  *Renderer;
 GameObject      *Player;
 BallObject      *Ball;
 ParticleGenerator *Particles;
+PostProcessor   *Effects;
+
+float ShakeTime = 0.0f;
 
 Game::Game( unsigned int width, unsigned int height ) 
 	: State( GAME_ACTIVE ), Keys(), Width( width ), Height( height ) { 
@@ -29,6 +33,7 @@ Game::~Game() {
     delete Player;
     delete Ball;
     delete Particles;
+    delete Effects; 
 
 }
 
@@ -37,6 +42,7 @@ void Game::Init() {
     // Load shaders
     ResourceManager::LoadShader( "shaders/particle.vs", "shaders/particle.fs", nullptr, "particle" );
     ResourceManager::LoadShader( "shaders/sprite.vs", "shaders/sprite.fs", nullptr, "sprite" );
+    ResourceManager::LoadShader("shaders/effects.vs", "shaders/effects.fs", nullptr, "postprocessing" );
     // Configure shaders
     glm::mat4 projection = glm::ortho( 0.0f, static_cast<float>( this->Width ), static_cast<float>( this->Height ), 0.0f, -1.0f, 1.0f );
     ResourceManager::GetShader( "sprite" ).Use().SetInteger( "image", 0 );
@@ -64,7 +70,7 @@ void Game::Init() {
     auto sprite = ResourceManager::GetShader( "sprite" );
     // Set render-specific controls
     Renderer = new SpriteRenderer( sprite );
-
+    Effects = new PostProcessor( ResourceManager::GetShader( "postprocessing" ), this->Width, this->Height );
     // the player pos
     glm::vec2 playerPos = glm::vec2(
         
@@ -87,6 +93,10 @@ void Game::Init() {
     
     );
 
+    //Effects->Shake = GL_TRUE;
+    //Effects->Confuse = GL_TRUE;
+    //Effects->Chaos = GL_TRUE;
+
 }
 
 void Game::Update( float dt ) {
@@ -100,6 +110,15 @@ void Game::Update( float dt ) {
     // update particles,  particles will use the game object properties from the ball object,
     // spawn 2 particles each frame and their positions will be offset towards the center of the ball
     Particles->Update( dt, *Ball, 2, glm::vec2( Ball->Radius/ 2.0 ) );
+
+    if( ShakeTime > 0.0f ) {
+        
+        ShakeTime -= dt;
+        
+        if( ShakeTime <= 0.0f )
+            Effects->Shake = false;
+    
+    }
 
 }
 
@@ -217,6 +236,8 @@ void Game::Render() {
 
     if( this->State == GAME_ACTIVE ) {
         
+        Effects->BeginRender();
+
         auto background = ResourceManager::GetTexture( "background" );
 
         // Draw background
@@ -239,6 +260,9 @@ void Game::Render() {
             this->ResetPlayer();
 
         }
+        Effects->EndRender();
+
+        Effects->Render( ( float )glfwGetTime() );
     
     }
 
@@ -266,8 +290,15 @@ void Game::DoCollisions() {
             */ 
             if( std::get<0>( collistion ) ) {
 
-                if( !box.Destroyed ) // Destroy block if not solid
+                if( !box.IsSolid ) // Destroy block if not solid
                     box.Destroyed = true;
+                else {
+
+                    // if block is solid, enable shake effect
+                    ShakeTime = 0.05f;
+                    Effects->Shake = true;
+
+                }
                 
                 Direction dir = std::get<1>( collistion );
 
