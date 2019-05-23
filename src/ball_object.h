@@ -12,7 +12,8 @@ class BallObject : public GameObject {
 
 public:
 
-    //ball state;
+    // ball state
+    bool Sticky, PassThrough;
     float Radius;
     bool Stuck;
 

@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "game_level.h"
 #include "ball_object.h"
+#include "power_up.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -49,6 +50,8 @@ public:
     unsigned int                 Width, Height;
     std::vector<GameLevel> Levels;
     unsigned int           Level;
+    std::vector<PowerUp> PowerUps;
+
     // Constructor/Destructor
     Game( unsigned int width, unsigned int height );
     ~Game();
@@ -62,6 +65,9 @@ public:
     void DoCollisions();
     void Update( float dt );
     void Render();
+
+    void SpawnPowerUps( GameObject &block );
+    void UpdatePowerUps( float dt );
 
     // Reset
     void ResetLevel();
