@@ -12,22 +12,28 @@
 #include "ball_object.h"
 #include "particle_generator.h"
 #include "post_processing.h"
+#include "text_renderer.h"
+//#include "irrKlang.h"
 
+#include <sstream>
 #include <algorithm>
 
+//using namespace irrklang;
+
 // Game-related State data
-SpriteRenderer  *Renderer;
-GameObject      *Player;
-BallObject      *Ball;
+SpriteRenderer    *Renderer;
+GameObject        *Player;
+BallObject        *Ball;
 ParticleGenerator *Particles;
-PostProcessor   *Effects;
+PostProcessor     *Effects;
+TextRenderer      *Text;
+// we created a SoundEngine that we use for all audio-related code
+//ISoundEngine      *SoundEngine = createIrrKlangDevice();
 
 float ShakeTime = 0.0f;
 
 Game::Game( unsigned int width, unsigned int height ) 
-	: State( GAME_ACTIVE ), Keys(), Width( width ), Height( height ) { 
-
-}
+	: State( GAME_MENU ), Keys(), Width( width ), Height( height ), Lives( 3 ) {}
 
 Game::~Game() {
     
@@ -35,7 +41,8 @@ Game::~Game() {
     delete Player;
     delete Ball;
     delete Particles;
-    delete Effects; 
+    delete Effects;
+    delete Text; 
 
 }
 
@@ -75,10 +82,16 @@ void Game::Init() {
     this->Levels.push_back( four );
     this->Level = 0;
     
+    // play sound, to do to play audio is simply call its play2D function. Its first parameter is the filename and the second parameter whether we want the file to loop (play again once it's finished). 
+    //SoundEngine->play2D( "audio/breakout.mp3", true );
+
     auto sprite = ResourceManager::GetShader( "sprite" );
     // Set render-specific controls
     Renderer = new SpriteRenderer( sprite );
     Effects = new PostProcessor( ResourceManager::GetShader( "postprocessing" ), this->Width, this->Height );
+    // init the text renderer and load the characters with this font, font size
+    Text = new TextRenderer( this->Width, this->Height );
+    Text->Load( "fonts/OCRAEXT.TTF", 24 );
     // the player pos
     glm::vec2 playerPos = glm::vec2(
         
@@ -128,7 +141,35 @@ void Game::Update( float dt ) {
     
     }
 
+    // ball reached bottom edge ?
+    if( Ball->Position.y >= this->Height ) {
+
+        --this->Lives;
+        // Did the player lose all his lives? : Game over
+        if( this->Lives == 0 ) {
+
+            this->ResetLevel();
+            this->State = GAME_MENU;
+
+        }
+
+        this->ResetPlayer();
+
+    }
+
     this->UpdatePowerUps( dt );
+
+    // if you are playing and you completed the level
+    if( this->State == GAME_ACTIVE and this->Levels[this->Level].IsCompleted() ) {
+        
+        // reset everything
+        this->ResetLevel();
+        this->ResetPlayer();
+        // set the chaos mode and change to win state
+        Effects->Chaos = true;
+        this->State = GAME_WIN;
+    
+    }
 
 }
 
@@ -141,6 +182,51 @@ void Game::Update( float dt ) {
 */
 void Game::ProcessInput( GLfloat dt ) {
 
+    // if in menu state
+    if( this->State == GAME_MENU ) {
+        // is enter key is pressed and not released
+        if( this->Keys[GLFW_KEY_ENTER] and !this->KeysProcessed[GLFW_KEY_ENTER] ) {
+            // set the state to active
+            this->State = GAME_ACTIVE;
+            // and release to true
+            this->KeysProcessed[GLFW_KEY_ENTER] = true;
+        
+        }
+        if( this->Keys[GLFW_KEY_UP] and !this->KeysProcessed[GLFW_KEY_UP] ) {
+            
+            // We use the modulus operator (%) to make sure the Level variable remains within the acceptable level range (between 0 and 3).
+            this->Level = ( this->Level + 1 ) % 4;
+            this->KeysProcessed[GLFW_KEY_UP] = true;
+        
+        }
+        if( this->Keys[GLFW_KEY_DOWN] and !this->KeysProcessed[GLFW_KEY_DOWN] ) {
+        
+            if( this->Level > 0 )
+                --this->Level;
+            else
+                this->Level = 3;
+            
+            this->KeysProcessed[GLFW_KEY_DOWN] = true;
+        
+        }
+
+    }
+    
+    // in win state ? and enter key pressed
+    if( this->State == GAME_WIN ) {
+        
+        if( this->Keys[GLFW_KEY_ENTER] ) {
+            
+            this->KeysProcessed[GLFW_KEY_ENTER] = true;
+            // disable the chaos mode and return to menu state
+            Effects->Chaos = false;
+            this->State = GAME_MENU;
+        
+        }
+    
+    }
+
+    // in active state
     if( this->State == GAME_ACTIVE ) {
         
         float velocity = PLAYER_VELOCITY * dt;
@@ -241,10 +327,9 @@ Collision Game::CheckCollision( BallObject &one, GameObject &two ) { // AABB - C
 }      
 
 void Game::Render() {
-    //auto face = ResourceManager::GetTexture("face");
-    //Renderer->DrawSprite(face, glm::vec2(200, 200), glm::vec2(300, 400), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-
-    if( this->State == GAME_ACTIVE ) {
+    
+    // if in any state
+    if( this->State == GAME_ACTIVE or this->State == GAME_MENU or this->State == GAME_WIN ) {
         
         Effects->BeginRender();
 
@@ -282,9 +367,29 @@ void Game::Render() {
 
         }
         Effects->EndRender();
-
         Effects->Render( ( float )glfwGetTime() );
+
+        std::stringstream ss; ss << this->Lives;
+        Text->RenderText( "Lives: " + ss.str(), 5.0f, 5.0f, 1.0f );
     
+    }
+
+    // menu state ?
+    if( this->State == GAME_MENU ) {
+
+        Text->RenderText( "Press 'ENTER' to start", 250.0f, Height / 2, 1.0f );
+        Text->RenderText( "Press 'UP' or 'DOWN' keys to select level", 245.0f, Height / 2 + 20.0f, 0.75f );
+
+    }
+    // win state ?
+    if( this->State == GAME_WIN ) {
+        
+        Text->RenderText(
+            "You WON!!!", 320.0, Height / 2 - 20.0, 1.0, glm::vec3( 0.0, 1.0, 0.0 )
+        );
+        Text->RenderText(
+            "Press ENTER to retry or ESC to quit", 130.0, Height / 2, 1.0, glm::vec3( 1.0, 1.0, 0.0 )
+        );
     }
 
 }
@@ -708,6 +813,8 @@ void Game::ResetLevel() {
         }
     
     }
+
+    this->Lives = 3;
 
 }
 

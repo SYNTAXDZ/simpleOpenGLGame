@@ -12,6 +12,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/ball_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/particle_generator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/post_processing.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/text_renderer.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/game.h
     ${CMAKE_CURRENT_SOURCE_DIR}/resource_manager.h
@@ -23,6 +24,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/ball_object.h
     ${CMAKE_CURRENT_SOURCE_DIR}/particle_generator.h
     ${CMAKE_CURRENT_SOURCE_DIR}/post_processing.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/text_renderer.h
 
 )
 
@@ -31,4 +33,3 @@ find_package( soil2 CONFIG REQUIRED )
 
 
 target_include_directories( game PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src" )
-#target_include_directories( resource_manager PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src" )

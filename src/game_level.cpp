@@ -59,13 +59,13 @@ bool GameLevel::IsCompleted() {
     
     for( GameObject &tile : this->Bricks ) {
         
-        if( !tile.IsSolid && !tile.Destroyed )
+        if( !tile.IsSolid and !tile.Destroyed )
             
-            return GL_FALSE;
+            return false;
     
     }
     
-    return GL_TRUE;
+    return true;
 
 }
 

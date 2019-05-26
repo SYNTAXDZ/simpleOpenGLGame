@@ -47,10 +47,12 @@ public:
     // Game state
     GameState              State;	
     GLboolean              Keys[1024];
-    unsigned int                 Width, Height;
+    unsigned int           Width, Height;
     std::vector<GameLevel> Levels;
     unsigned int           Level;
-    std::vector<PowerUp> PowerUps;
+    std::vector<PowerUp>   PowerUps;
+    unsigned int           Lives;
+    bool KeysProcessed[1024];
 
     // Constructor/Destructor
     Game( unsigned int width, unsigned int height );
