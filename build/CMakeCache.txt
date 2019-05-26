@@ -17,6 +17,15 @@
 //Build the testing tree.
 BUILD_TESTING:BOOL=ON
 
+//Path to a file.
+BZIP2_INCLUDE_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
+//Path to a library.
+BZIP2_LIBRARY_DEBUG:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libbz2d.a
+
+//Path to a library.
+BZIP2_LIBRARY_RELEASE:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libbz2.a
+
 //Path to a program.
 BZRCOMMAND:FILEPATH=BZRCOMMAND-NOTFOUND
 
@@ -256,6 +265,18 @@ CVS_UPDATE_OPTIONS:STRING=-d -A -P
 //Maximum time allowed before CTest will kill the test.
 DART_TESTING_TIMEOUT:STRING=1500
 
+//Path to a file.
+FREETYPE_INCLUDE_DIR_freetype2:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
+//Path to a file.
+FREETYPE_INCLUDE_DIR_ft2build:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
+//Path to a library.
+FREETYPE_LIBRARY_DEBUG:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libfreetyped.a
+
+//Path to a library.
+FREETYPE_LIBRARY_RELEASE:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libfreetype.a
+
 //Path to a program.
 GITCOMMAND:FILEPATH=/usr/bin/git
 
@@ -283,6 +304,14 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 //Path to a program.
 P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
 
+//Path to a library.
+PNG_LIBRARY_DEBUG:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libpng16d.a
+
+PNG_LIBRARY_RELEASE:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/png/../../lib/libpng16.a
+
+//Path to a file.
+PNG_PNG_INCLUDE_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
 //Path to scp command, used by CTest for submitting results to
 // a Dart server
 SCPCOMMAND:FILEPATH=/usr/bin/scp
@@ -306,6 +335,15 @@ VCPKG_APPLOCAL_DEPS:BOOL=ON
 //Vcpkg target triplet (ex. x86-windows)
 VCPKG_TARGET_TRIPLET:STRING=x64-linux
 
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/include
+
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libz.a
+
 //Path to a program.
 _VCPKG_CL:FILEPATH=_VCPKG_CL-NOTFOUND
 
@@ -320,6 +358,9 @@ glfw3_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/glfw3
 
 //The directory containing a CMake configuration file for glm.
 glm_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/glm
+
+//Dependencies for target
+irrKlang_LIB_DEPENDS:STATIC=
 
 //Dependencies for the target
 resource_manager_LIB_DEPENDS:STATIC=general;soil2;
@@ -338,6 +379,14 @@ soil2_DIR:PATH=/home/syntax/Programs/vcpkg/installed/x64-linux/share/soil2
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: BZIP2_INCLUDE_DIR
+BZIP2_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BZIP2_LIBRARY_DEBUG
+BZIP2_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BZIP2_LIBRARY_RELEASE
+BZIP2_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Have symbol BZ2_bzCompressInit
+BZIP2_NEED_PREFIX:INTERNAL=1
 //ADVANCED property for variable: BZRCOMMAND
 BZRCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -523,8 +572,24 @@ CVSCOMMAND-ADVANCED:INTERNAL=1
 CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//Details about finding BZip2
+FIND_PACKAGE_MESSAGE_DETAILS_BZip2:INTERNAL=[optimized;/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libbz2.a;debug;/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libbz2d.a][/home/syntax/Programs/vcpkg/installed/x64-linux/include][v1.0.6()]
+//Details about finding Freetype
+FIND_PACKAGE_MESSAGE_DETAILS_Freetype:INTERNAL=[optimized;/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libfreetype.a;debug;/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libfreetyped.a][/home/syntax/Programs/vcpkg/installed/x64-linux/include][v2.9.1()]
 //Details about finding GLEW
 FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[/home/syntax/Programs/vcpkg/installed/x64-linux/include][optimized;/home/syntax/Programs/vcpkg/installed/x64-linux/lib/libGLEW.a;debug;/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libGLEWd.a][v()]
+//Details about finding PNG
+FIND_PACKAGE_MESSAGE_DETAILS_PNG:INTERNAL=[optimized;/home/syntax/Programs/vcpkg/installed/x64-linux/share/png/../../lib/libpng16.a;debug;/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libpng16d.a][/home/syntax/Programs/vcpkg/installed/x64-linux/include][v1.6.36()]
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/home/syntax/Programs/vcpkg/installed/x64-linux/debug/lib/libz.a][/home/syntax/Programs/vcpkg/installed/x64-linux/include][v1.2.11()]
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_freetype2
+FREETYPE_INCLUDE_DIR_freetype2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_ft2build
+FREETYPE_INCLUDE_DIR_ft2build-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_LIBRARY_DEBUG
+FREETYPE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_LIBRARY_RELEASE
+FREETYPE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_INCLUDE_DIR
@@ -543,6 +608,12 @@ MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: P4COMMAND
 P4COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_LIBRARY_DEBUG
+PNG_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_LIBRARY_RELEASE
+PNG_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_PNG_INCLUDE_DIR
+PNG_PNG_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SCPCOMMAND
 SCPCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SITE
@@ -553,6 +624,12 @@ SLURM_SBATCH_COMMAND-ADVANCED:INTERNAL=1
 SLURM_SRUN_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SVNCOMMAND
 SVNCOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //Vcpkg root directory
 _VCPKG_ROOT_DIR:INTERNAL=/home/syntax/Programs/vcpkg
 

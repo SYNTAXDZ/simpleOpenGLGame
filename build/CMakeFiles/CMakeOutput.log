@@ -555,3 +555,25 @@ Run Build Command:"/usr/bin/ninja" "cmTC_abee8"
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the BZ2_bzCompressInit exist passed with the following output:
+Change Dir: /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_f092f"
+[1/2] Building C object CMakeFiles/cmTC_f092f.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_f092f
+
+File /home/syntax/Knowledge/learn_cpp/simpleOpenGLGame/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <bzlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef BZ2_bzCompressInit
+  return ((int*)(&BZ2_bzCompressInit))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
